@@ -1,29 +1,19 @@
-# Seed add you the ability to populate your db.
-# We provide you a basic shell for interaction with the end user.
-# So try some code like below:
-#
-#   name = shell.ask("What's your name?")
-#   shell.say name
-#
-email     = shell.ask "Which email do you want use for logging into admin?"
-password  = shell.ask "Tell me the password to use:", :echo => false
+puts ""
 
-shell.say ""
-
-account = Account.new(:email => email, :name => "Foo", :surname => "Bar", :password => password, :password_confirmation => password, :role => "admin")
+account = Account.new(:email => "pcf@demo.io", :name => "Foo", :surname => "Bar", :password => "admin", :password_confirmation => "admin", :role => "admin")
 
 if account.valid?
   account.save
-  shell.say "================================================================="
-  shell.say "Account has been successfully created, now you can login with:"
-  shell.say "================================================================="
-  shell.say "   email: #{email}"
-  shell.say "   password: #{?* * password.length}"
-  shell.say "================================================================="
+  puts "================================================================="
+  puts "Account has been successfully created, now you can login with:"
+  puts "================================================================="
+  puts "   email: #{email}"
+  puts "   password: #{?* * password.length}"
+  puts "================================================================="
 else
-  shell.say "Sorry, but something went wrong!"
-  shell.say ""
-  account.errors.full_messages.each { |m| shell.say "   - #{m}" }
+  puts "Sorry, but something went wrong!"
+  puts ""
+  account.errors.full_messages.each { |m| puts "   - #{m}" }
 end
 
-shell.say ""
+puts ""

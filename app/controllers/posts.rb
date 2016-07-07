@@ -1,7 +1,7 @@
 PcfDemoBlog::App.controllers :posts do
 
   get :index do
-    @posts = Post.order('created_at DESC').all
+    @posts = Post.all
     render 'posts/index'
   end
 
